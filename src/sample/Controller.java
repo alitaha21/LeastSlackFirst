@@ -16,7 +16,7 @@ public class Controller {
 
     Task[] task = new Task[3];
 
-    public LineChart<Number,String> chart;
+    public AreaChart<Number,String> chart;
     public NumberAxis horizontalAxis;
     public CategoryAxis verticalAxis;
 
