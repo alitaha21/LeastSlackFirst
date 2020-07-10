@@ -7,9 +7,9 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="295.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
 
-        <AreaChart fx:id="chart" layoutX="94.0" layoutY="218.0" prefHeight="257.0" prefWidth="544.0">
+        <AreaChart fx:id="chart" layoutX="94.0" layoutY="218.0" prefHeight="257.0" prefWidth="544.0" title="Minimum Laxity First">
             <xAxis>
-                <NumberAxis animated="false" forceZeroInRange="false" minorTickCount="0" minorTickLength="0.0" minorTickVisible="false" side="BOTTOM" tickLabelGap="0.0" tickLength="2.0" tickMarkVisible="false" tickUnit="1.0" upperBound="80.0" fx:id="horizontalAxis" />
+                <NumberAxis fx:id="horizontalAxis" animated="false" forceZeroInRange="false" minorTickCount="0" minorTickLength="0.0" minorTickVisible="false" side="BOTTOM" tickLabelGap="0.0" tickLength="2.0" tickMarkVisible="false" tickUnit="1.0" upperBound="80.0" />
             </xAxis>
             <yAxis>
                 <CategoryAxis fx:id="verticalAxis" animated="false" prefHeight="300.0" prefWidth="37.0" side="LEFT" />

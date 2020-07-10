@@ -63,91 +63,109 @@ public class Controller {
 
         series[0].getData().add(new XYChart.Data(currentTime, task[0].name));
         series[0].getData().add(new XYChart.Data(currentTime + task[0].executionTime, task[0].name));
+        series[0].setName("J11");
 
         currentTime += task[0].executionTime;
 
         series[1].getData().add(new XYChart.Data(currentTime, task[1].name));
         series[1].getData().add(new XYChart.Data(currentTime + (4 - currentTime), task[1].name));
+        series[1].setName("J21");
 
         currentTime += (4 - currentTime);
 
         series[2].getData().add(new XYChart.Data(currentTime, task[0].name));
         series[2].getData().add(new XYChart.Data(currentTime + task[0].executionTime, task[0].name));
+        series[2].setName("J12");
 
         currentTime += task[0].executionTime;
 
         series[3].getData().add(new XYChart.Data(currentTime, task[2].name));
         series[3].getData().add(new XYChart.Data(currentTime + (8 - currentTime), task[2].name));
+        series[3].setName("J31");
 
         currentTime += (8 - currentTime);
 
         series[4].getData().add(new XYChart.Data(currentTime, task[1].name));
         series[4].getData().add(new XYChart.Data(currentTime + 0.5, task[1].name));
+        series[4].setName("J21");
 
         currentTime += 0.5;
 
         series[5].getData().add(new XYChart.Data(currentTime, task[0].name));
         series[5].getData().add(new XYChart.Data(currentTime + task[0].executionTime, task[0].name));
+        series[5].setName("J13");
 
         currentTime += task[0].executionTime;
 
         series[6].getData().add(new XYChart.Data(currentTime, task[2].name));
         series[6].getData().add(new XYChart.Data(currentTime + 0.5, task[2].name));
+        series[6].setName("J31");
 
         currentTime += 0.5;
 
         series[7].getData().add(new XYChart.Data(currentTime, task[1].name));
         series[7].getData().add(new XYChart.Data(currentTime + 1.5, task[1].name));
+        series[7].setName("J22");
 
         currentTime += 1.5;
 
         series[8].getData().add(new XYChart.Data(currentTime, task[0].name));
         series[8].getData().add(new XYChart.Data(currentTime + task[0].executionTime, task[0].name));
+        series[8].setName("J14");
 
         currentTime += task[0].executionTime;
 
         series[9].getData().add(new XYChart.Data(currentTime, task[1].name));
         series[9].getData().add(new XYChart.Data(currentTime + 1.5, task[1].name));
+        series[9].setName("J22");
 
         currentTime += 1.5;
 
         series[10].getData().add(new XYChart.Data(currentTime, task[2].name));
         series[10].getData().add(new XYChart.Data(currentTime + 1, task[2].name));
+        series[10].setName("J32");
 
         currentTime += 1;
 
         series[11].getData().add(new XYChart.Data(currentTime, task[0].name));
         series[11].getData().add(new XYChart.Data(currentTime + 1.5, task[0].name));
+        series[11].setName("J15");
 
         currentTime += 1.5;
 
         series[12].getData().add(new XYChart.Data(currentTime, task[2].name));
         series[12].getData().add(new XYChart.Data(currentTime + 2, task[2].name));
+        series[12].setName("J32");
 
         currentTime += 2.5;
 
         series[13].getData().add(new XYChart.Data(currentTime, task[0].name));
         series[13].getData().add(new XYChart.Data(currentTime + task[0].executionTime, task[0].name));
+        series[13].setName("J16");
 
         currentTime += task[0].executionTime;
 
         series[14].getData().add(new XYChart.Data(currentTime, task[1].name));
         series[14].getData().add(new XYChart.Data(currentTime + 2.5, task[1].name));
+        series[14].setName("J23");
 
         currentTime += 2.5;
 
         series[15].getData().add(new XYChart.Data(currentTime, task[0].name));
         series[15].getData().add(new XYChart.Data(currentTime + task[0].executionTime, task[0].name));
+        series[15].setName("J17");
 
         currentTime += task[0].executionTime;
 
         series[16].getData().add(new XYChart.Data(currentTime, task[1].name));
         series[16].getData().add(new XYChart.Data(currentTime + 0.5, task[1].name));
+        series[16].setName("J23");
 
         currentTime += 0.5;
 
         series[17].getData().add(new XYChart.Data(currentTime, task[2].name));
         series[17].getData().add(new XYChart.Data(currentTime + 2, task[2].name));
+        series[17].setName("J33");
 
         chart.getData().addAll(series);
     }
