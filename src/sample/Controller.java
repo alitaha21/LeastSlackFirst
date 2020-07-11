@@ -29,9 +29,9 @@ public class Controller {
     }
 
     private void draw(){
-        getTaskParameters(0, "T1", 4, 1.5, 4, 0);
-        getTaskParameters(1, "T2", 10, 3, 10, 1);
-        getTaskParameters(2, "T3", 12, 3, 12, 2);
+        getTaskParameters(0, "T1", 4, 1.5, 0);
+        getTaskParameters(1, "T2", 10, 3, 1);
+        getTaskParameters(2, "T3", 12, 3, 2);
         drawChart();
     }
 
@@ -40,132 +40,102 @@ public class Controller {
             String name,
             double period,
             double executionTime,
-            double deadline,
             int priority
     ) {
         task[taskNumber].name = name;
         task[taskNumber].releaseTime = 0;
         task[taskNumber].period = period;
         task[taskNumber].executionTime = executionTime;
-        task[taskNumber].deadline = deadline;
+        task[taskNumber].deadline = period;
         task[taskNumber].priority = priority;
     }
 
+    private void seriesDraw(int seriesNumber, double startTime, double endTime, String taskName, String job) {
+        series[seriesNumber].getData().add(new XYChart.Data<>(startTime, taskName));
+        series[seriesNumber].getData().add(new XYChart.Data<>(endTime, taskName));
+        series[seriesNumber].setName(job);
+    }
+
+    int count = 18;
+    XYChart.Series<Number, String>[] series = new XYChart.Series[count];
+
     private void drawChart() {
         chart.getData().clear();
-        int count = 18;
-        XYChart.Series<Number, String>[] series = new XYChart.Series[count];
         for (int i = 0; i < count; i++) {
             series[i] = new XYChart.Series<>();
         }
 
-        double currentTime = task[0].releaseTime;
+        double startTime = task[0].releaseTime;
+        double endTime = startTime + task[0].executionTime;
+        seriesDraw(0, startTime, endTime, task[0].name, "J11");
 
-        series[0].getData().add(new XYChart.Data<>(currentTime, task[0].name));
-        series[0].getData().add(new XYChart.Data<>(currentTime + task[0].executionTime, task[0].name));
-        series[0].setName("J11");
+        startTime = endTime;
+        endTime = startTime + task[1].executionTime - 0.5;
+        seriesDraw(1, startTime, endTime, task[1].name, "J21");
 
-        currentTime += task[0].executionTime;
+        startTime = endTime;
+        endTime = startTime + task[0].executionTime;
+        seriesDraw(2, startTime, endTime, task[0].name, "J12");
 
-        series[1].getData().add(new XYChart.Data<>(currentTime, task[1].name));
-        series[1].getData().add(new XYChart.Data<>(currentTime + (4 - currentTime), task[1].name));
-        series[1].setName("J21");
+        startTime = endTime;
+        endTime = startTime + task[2].executionTime - 0.5;
+        seriesDraw(3, startTime, endTime, task[2].name, "J31");
 
-        currentTime += (4 - currentTime);
+        startTime = endTime;
+        endTime = startTime + task[1].executionTime - 2.5;
+        seriesDraw(4, startTime, endTime, task[1].name, "J21");
 
-        series[2].getData().add(new XYChart.Data<>(currentTime, task[0].name));
-        series[2].getData().add(new XYChart.Data<>(currentTime + task[0].executionTime, task[0].name));
-        series[2].setName("J12");
+        startTime = endTime;
+        endTime = startTime + task[0].executionTime;
+        seriesDraw(5, startTime, endTime, task[0].name, "J13");
 
-        currentTime += task[0].executionTime;
+        startTime = endTime;
+        endTime = startTime + task[2].executionTime - 2.5;
+        seriesDraw(6, startTime, endTime, task[2].name, "J31");
 
-        series[3].getData().add(new XYChart.Data<>(currentTime, task[2].name));
-        series[3].getData().add(new XYChart.Data<>(currentTime + (8 - currentTime), task[2].name));
-        series[3].setName("J31");
+        startTime = endTime;
+        endTime = startTime + task[1].executionTime - 1.5;
+        seriesDraw(7, startTime, endTime, task[1].name, "J22");
 
-        currentTime += (8 - currentTime);
+        startTime = endTime;
+        endTime = startTime + task[0].executionTime;
+        seriesDraw(8, startTime, endTime, task[0].name, "J14");
 
-        series[4].getData().add(new XYChart.Data<>(currentTime, task[1].name));
-        series[4].getData().add(new XYChart.Data<>(currentTime + 0.5, task[1].name));
-        series[4].setName("J21");
+        startTime = endTime;
+        endTime = startTime + task[1].executionTime - 1.5;
+        seriesDraw(9, startTime, endTime, task[1].name, "J22");
 
-        currentTime += 0.5;
+        startTime = endTime;
+        endTime = startTime + task[2].executionTime - 2;
+        seriesDraw(10, startTime, endTime, task[2].name, "J32");
 
-        series[5].getData().add(new XYChart.Data<>(currentTime, task[0].name));
-        series[5].getData().add(new XYChart.Data<>(currentTime + task[0].executionTime, task[0].name));
-        series[5].setName("J13");
+        startTime = endTime;
+        endTime = startTime + task[0].executionTime;
+        seriesDraw(11, startTime, endTime, task[0].name, "J15");
 
-        currentTime += task[0].executionTime;
+        startTime = endTime;
+        endTime = startTime + task[2].executionTime - 1;
+        seriesDraw(12, startTime, endTime, task[2].name, "J32");
 
-        series[6].getData().add(new XYChart.Data<>(currentTime, task[2].name));
-        series[6].getData().add(new XYChart.Data<>(currentTime + 0.5, task[2].name));
-        series[6].setName("J31");
+        startTime = endTime + 0.5;
+        endTime = startTime + task[0].executionTime;
+        seriesDraw(13, startTime, endTime, task[0].name, "J16");
 
-        currentTime += 0.5;
+        startTime = endTime;
+        endTime = startTime + 2.5;
+        seriesDraw(14, startTime, endTime, task[1].name, "J23");
 
-        series[7].getData().add(new XYChart.Data<>(currentTime, task[1].name));
-        series[7].getData().add(new XYChart.Data<>(currentTime + 1.5, task[1].name));
-        series[7].setName("J22");
+        startTime = endTime;
+        endTime = startTime + task[0].executionTime;
+        seriesDraw(15, startTime, endTime, task[0].name, "J17");
 
-        currentTime += 1.5;
+        startTime = endTime;
+        endTime = startTime + task[1].executionTime - 2.5;
+        seriesDraw(16, startTime, endTime, task[1].name, "J23");
 
-        series[8].getData().add(new XYChart.Data<>(currentTime, task[0].name));
-        series[8].getData().add(new XYChart.Data<>(currentTime + task[0].executionTime, task[0].name));
-        series[8].setName("J14");
-
-        currentTime += task[0].executionTime;
-
-        series[9].getData().add(new XYChart.Data<>(currentTime, task[1].name));
-        series[9].getData().add(new XYChart.Data<>(currentTime + 1.5, task[1].name));
-        series[9].setName("J22");
-
-        currentTime += 1.5;
-
-        series[10].getData().add(new XYChart.Data<>(currentTime, task[2].name));
-        series[10].getData().add(new XYChart.Data<>(currentTime + 1, task[2].name));
-        series[10].setName("J32");
-
-        currentTime += 1;
-
-        series[11].getData().add(new XYChart.Data<>(currentTime, task[0].name));
-        series[11].getData().add(new XYChart.Data<>(currentTime + 1.5, task[0].name));
-        series[11].setName("J15");
-
-        currentTime += 1.5;
-
-        series[12].getData().add(new XYChart.Data<>(currentTime, task[2].name));
-        series[12].getData().add(new XYChart.Data<>(currentTime + 2, task[2].name));
-        series[12].setName("J32");
-
-        currentTime += 2.5;
-
-        series[13].getData().add(new XYChart.Data<>(currentTime, task[0].name));
-        series[13].getData().add(new XYChart.Data<>(currentTime + task[0].executionTime, task[0].name));
-        series[13].setName("J16");
-
-        currentTime += task[0].executionTime;
-
-        series[14].getData().add(new XYChart.Data<>(currentTime, task[1].name));
-        series[14].getData().add(new XYChart.Data<>(currentTime + 2.5, task[1].name));
-        series[14].setName("J23");
-
-        currentTime += 2.5;
-
-        series[15].getData().add(new XYChart.Data<>(currentTime, task[0].name));
-        series[15].getData().add(new XYChart.Data<>(currentTime + task[0].executionTime, task[0].name));
-        series[15].setName("J17");
-
-        currentTime += task[0].executionTime;
-
-        series[16].getData().add(new XYChart.Data<>(currentTime, task[1].name));
-        series[16].getData().add(new XYChart.Data<>(currentTime + 0.5, task[1].name));
-        series[16].setName("J23");
-
-        currentTime += 0.5;
-
-        series[17].getData().add(new XYChart.Data<>(currentTime, task[2].name));
-        series[17].getData().add(new XYChart.Data<>(currentTime + 2, task[2].name));
-        series[17].setName("J33");
+        startTime = endTime;
+        endTime = startTime + task[2].executionTime - 1;
+        seriesDraw(17, startTime, endTime, task[2].name, "J33");
 
         chart.getData().addAll(series);
     }
